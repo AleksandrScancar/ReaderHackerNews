@@ -1,0 +1,14 @@
+search:
+	model:
+		in: %appDir%/Model
+	-
+		in: %appDir%
+		classes:
+			- *Factory
+			- *Facade
+			- *Repository
+
+
+services:
+	- App\Router\RouterFactory::createRouter
+	- App\Api\NewsReader(%apiUri%)

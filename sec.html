@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Something beautiful is going to Happen</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        @media only screen and (max-width: 320px) {
+            #timer > * {
+                width: 49%;
+                display: inline-block;
+                line-height: 1;
+                padding: 0px;
+                font-size: 40px;
+
+            }
+        }
+#loadingDiv {
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: fixed;
+    top: 0;
+    text-align: center;
+}
+        html,
+        body {
+            font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+            font-weight: 700;
+            background: #000;
+            color: #fff;
+            height: 100%;
+            margin: 0;
+            min-height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            display: block;
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+
+        #timer > * {
+            display: inline-block;
+            line-height: 1;
+            padding: 20px;
+            font-size: 40px;
+        }
+
+        span {
+            display: block;
+            font-size: 20px;
+            color: white;
+        }
+
+        #timer {
+            text-align: center;
+        }
+
+        .image{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="timer">
+    <div id="days"></div>
+</div>
+<div class="image">
+    <div class="marquee">
+        <img src="prg.jpeg" width="250px;">
+    </div>
+</div>
+<script>
+    (function ($, window, undefined) {
+        $.fn.marqueeify = function (options) {
+            var settings = $.extend({
+                horizontal: true,
+                vertical: true,
+                speed: 1, // In pixels per second
+                container: $(this).parent(),
+                bumpEdge: function () {
+                }
+            }, options);
+
+            return this.each(function () {
+                var containerWidth, containerHeight, elWidth, elHeight, move, getSizes,
+                    $el = $(this);
+
+                getSizes = function () {
+                    containerWidth = settings.container.outerWidth();
+                    containerHeight = settings.container.outerHeight();
+                    elWidth = $el.outerWidth();
+                    elHeight = $el.outerHeight();
+                };
+
+                move = {
+                    right: function () {
+                        $el.animate({left: (containerWidth - elWidth)}, {
+                            duration: ((containerWidth / settings.speed) * 1500),
+                            queue: false,
+                            easing: "linear",
+                            complete: function () {
+                                settings.bumpEdge();
+                                move.left();
+                            }
+                        });
+                    },
+                    left: function () {
+                        $el.animate({left: 0}, {
+                            duration: ((containerWidth / settings.speed) * 1500),
+                            queue: false,
+                            easing: "linear",
+                            complete: function () {
+                                settings.bumpEdge();
+                                move.right();
+                            }
+                        });
+                    },
+                    down: function () {
+                        $el.animate({top: (containerHeight - elHeight)}, {
+                            duration: ((containerHeight / settings.speed) * 1500),
+                            queue: false,
+                            easing: "linear",
+                            complete: function () {
+                                settings.bumpEdge();
+                                move.up();
+                            }
+                        });
+                    },
+                    up: function () {
+                        $el.animate({top: 0}, {
+                            duration: ((containerHeight / settings.speed) * 1500),
+                            queue: false,
+                            easing: "linear",
+                            complete: function () {
+                                settings.bumpEdge();
+                                move.down();
+                            }
+                        });
+                    }
+                };
+
+                getSizes();
+
+                if (settings.horizontal) {
+                    move.right();
+                }
+                if (settings.vertical) {
+                    move.down();
+                }
+
+                // Make that shit responsive!
+                $(window).resize(function () {
+                    getSizes();
+                });
+            });
+        };
+    })(jQuery, window);
+
+    $(document).ready(function () {
+        var times = 0;
+        var newImageText = ['dc.png','prg.jpeg'];
+        $('.marquee').marqueeify({
+            speed: 300,
+            bumpEdge: function () {
+                var newColor = "hsl(" + Math.floor(Math.random() * 360) + ", 100%, 50%)";
+                $('#timer > *').css('color', newColor);
+                $('.marquee > img').attr('src', newImageText[times]);
+                times++;
+                if (times == newImageText.length) {
+                    times = 0;
+                }
+            }
+        });
+    });
+</script>
+<script>
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+
+            $("#days").html(seconds + "<span>seconds</span>");
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var fiveMinutes = 15,
+            display = document.querySelector('#time');
+
+        startTimer(fiveMinutes, display);
+    };
+
+
+</script>
+
+</body>
+</html>
+

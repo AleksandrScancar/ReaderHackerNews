@@ -1,0 +1,30 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+<div class="container">
+    <h1>Výpis hacker news</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Interni ID</th>
+            <th scope="col">Text</th>
+            <th scope="col">Externi odkaz</th>
+            <th scope="col">Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $items as $item}
+        <tr>
+            <th scope="row">{$item->getId()}</th>
+            <td>{$item->getTitle()}</td>
+            {if $item->getUrl() === null}
+                <td>/</td>
+            {else}
+                <td><a href="{$item->getUrl()}" target="_blank">{$item->getUrl()}</a></td>
+            {/if}
+            <td>{$item->getTime()|date:'%d.%m.%Y'}</td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+</div>
