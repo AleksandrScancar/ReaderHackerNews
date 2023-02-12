@@ -14,10 +14,13 @@ class ComposerStaticInit9d39049789fdfad584e0471b4ed36858
         'S' => 
         array (
             'Symfony\\Thanks\\' => 15,
+            'SlevomatCodingStandard\\' => 23,
         ),
         'P' => 
         array (
             'Predis\\' => 7,
+            'PHPStan\\PhpDocParser\\' => 21,
+            'PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 57,
         ),
         'C' => 
         array (
@@ -34,9 +37,21 @@ class ComposerStaticInit9d39049789fdfad584e0471b4ed36858
         array (
             0 => __DIR__ . '/..' . '/symfony/thanks/src',
         ),
+        'SlevomatCodingStandard\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slevomat/coding-standard/SlevomatCodingStandard',
+        ),
         'Predis\\' => 
         array (
             0 => __DIR__ . '/..' . '/predis/predis/src',
+        ),
+        'PHPStan\\PhpDocParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
+        ),
+        'PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
         'Contributte\\Redis\\' => 
         array (

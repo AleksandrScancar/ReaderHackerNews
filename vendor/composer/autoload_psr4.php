@@ -7,7 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symfony\\Thanks\\' => array($vendorDir . '/symfony/thanks/src'),
+    'SlevomatCodingStandard\\' => array($vendorDir . '/slevomat/coding-standard/SlevomatCodingStandard'),
     'Predis\\' => array($vendorDir . '/predis/predis/src'),
+    'PHPStan\\PhpDocParser\\' => array($vendorDir . '/phpstan/phpdoc-parser/src'),
+    'PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
     'Contributte\\Redis\\' => array($vendorDir . '/contributte/redis/src'),
     'App\\' => array($baseDir . '/app'),
 );

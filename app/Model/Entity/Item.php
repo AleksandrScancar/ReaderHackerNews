@@ -1,190 +1,129 @@
 <?php
 
+declare(strict_types = 1);
 
 namespace App\Model\Entity;
 
-
 use Nette\Utils\DateTime;
+use function property_exists;
 
-class Item
+final class Item
 {
-    /** @var int */
-    private $id;
 
-    /** @var bool */
-    private $deleted;
+    private int $id;
 
-    /** @var bool */
-    private $dead;
+    private bool $deleted;
 
-    /** @var string */
-    private $type;
+    private bool $dead;
 
-    /** @var string */
-    private $by;
+    private string $type;
 
-    /** @var DateTime */
-    private $time;
+    private string $by;
 
-    /** @var string */
-    private $text;
+    private DateTime $time;
 
-    /** @var string */
-    private $parent;
+    private string $text;
 
-    /** @var string */
-    private $poll;
+    private string $parent;
 
-    /** @var string */
-    private $kids;//TODO better would be to have kids as Collection of objects Child-Kid
+    private string $poll;
 
-    /** @var string */
-    private $url;
+    private string $kids;
 
-    /** @var string */
-    private $score;
+    private string $url;
 
-    /** @var string */
-    private $title;
+    private int $score;
 
-    /** @var string */
-    private $parts;
+    private string $title;
 
-    /** @var int */
-    private $descendants;
+    private string $parts;
 
-    /**
-     * @return int
-     */
+    private int $descendants;
+
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return bool
-     */
     public function isDeleted(): bool
     {
         return $this->deleted;
     }
 
-    /**
-     * @return bool
-     */
     public function isDead(): bool
     {
         return $this->dead;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getBy(): string
     {
         return $this->by;
     }
 
-    /**
-     * @return DateTime
-     */
     public function getTime(): DateTime
     {
         return $this->time;
     }
 
-    /**
-     * @return string
-     */
     public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @return string
-     */
     public function getParent(): string
     {
         return $this->parent;
     }
 
-    /**
-     * @return string
-     */
     public function getPoll(): string
     {
         return $this->poll;
     }
 
-    /**
-     * @return string
-     */
     public function getKids(): string
     {
         return $this->kids;
     }
 
-    /**
-     * @return null|string
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @return string
-     */
-    public function getScore(): string
+    public function getScore(): int
     {
         return $this->score;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @return string
-     */
     public function getParts(): string
     {
         return $this->parts;
     }
 
-    /**
-     * @return int
-     */
     public function getDescendants(): int
     {
         return $this->descendants;
     }
 
-    public function constructFromJson(array $data)
+    public function constructFromJson(array $data): void
     {
-        foreach($data as $key => $val) {
-            if(property_exists(__CLASS__,$key)) {
-                if($key === 'time') {
-                    $this->$key =  new DateTime('@' . $val);
-                }else{
-                    $this->$key = $val;
-                }
+        foreach ($data as $key => $val) {
+            if (property_exists(self::class, $key)) {
+                $this->$key = $key === 'time'
+                    ? new DateTime('@' . $val)
+                    : $val;
             }
         }
     }
-
 
 }

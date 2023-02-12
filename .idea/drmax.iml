@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/contributte/redis" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dealerdirect/phpcodesniffer-composer-installer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/latte/latte" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nette/application" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nette/bootstrap" />
@@ -26,7 +27,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/nette/security" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nette/tester" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpstan/phpdoc-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/predis/predis" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/slevomat/coding-standard" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/squizlabs/php_codesniffer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/thanks" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tracy/tracy" />
     </content>

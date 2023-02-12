@@ -1,3 +1,7 @@
-config/local.neon
-/vendor
+/config/local.neon
 /.idea
+# Composer
+/vendor
+
+# Assets
+/www/dist

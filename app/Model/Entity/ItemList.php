@@ -3,7 +3,6 @@
 
 namespace App\Model\Entity;
 
-
 final class ItemList
 {
     /**
@@ -14,11 +13,10 @@ final class ItemList
     /**
      * The constructor.
      *
-     * @param Item ...$item  items
+     * @param Item ...$item items
      */
     public function __construct(Item ...$item)
     {
-        $this->list = $item;
     }
 
     /**
